@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Qualified Piper Test</title>
+
+    <!-- Qualified -->
+    <script>
+      (function (w, q) {
+        w.QualifiedObject = q;
+        w[q] = w[q] || function () {
+          (w[q].q = w[q].q || []).push(arguments);
+        };
+      })(window, "qualified");
+    </script>
+    <script async src="https://js.qualified.com/qualified.js?token=FBhrxwMhTFsNB99Y"></script>
+    <script>
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          window.qualified && window.qualified("page");
+        }, 500);
+      });
+    </script>
+    <!-- End Qualified -->
+
+    <style>
+      body {
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        max-width: 720px;
+        margin: 80px auto;
+        padding: 0 24px;
+        color: #17323a;
+        line-height: 1.6;
+      }
+      h1 { margin-bottom: 8px; }
+      .muted { color: #6b7a80; font-size: 14px; }
+      code { background: #eef5f6; padding: 2px 6px; border-radius: 4px; }
+      .card {
+        background: #f7fafb;
+        border: 1px solid #dce7ea;
+        border-radius: 8px;
+        padding: 16px 20px;
+        margin-top: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Qualified Piper Test</h1>
+    <p class="muted">GitHub Pages 上で Qualified snippet を読み込むテストページです。</p>
+
+    <div class="card">
+      <p>このページで Piper が表示されれば、Qualified の Experience 条件と snippet 設定は正常です。</p>
+      <p>表示されない場合は、DevTools の Console で <code>window.qualified</code> の値と <code>qualified.js</code> のネットワーク応答を確認してください。</p>
+    </div>
+
+    <div class="card">
+      <strong>チェックリスト</strong>
+      <ul>
+        <li>Qualified → Settings → Setup → <code>Website domains</code> にこのページのホスト名を追加</li>
+        <li>Automatic Experience の URL 条件を、このページの URL に合わせる</li>
+        <li>シークレットウィンドウで開いて過去 cookie の影響を排除</li>
+      </ul>
+    </div>
+  </body>
+</html>
