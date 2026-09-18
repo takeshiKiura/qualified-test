@@ -3,9 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Qualified Piper Test</title>
+    <title>MFG Core Modernization | 製造業向け基幹システムのモダナイゼーション</title>
 
-    <!-- Qualified -->
     <script>
       (function (w, q) {
         w.QualifiedObject = q;
@@ -17,50 +16,313 @@
     <script async src="https://js.qualified.com/qualified.js?token=FBhrxwMhTFsNB99Y"></script>
     <script>
       window.addEventListener("load", function () {
-        setTimeout(function () {
-          window.qualified && window.qualified("page");
-        }, 500);
+        window.setTimeout(function () {
+          window.qualified("page");
+        }, 1000);
       });
     </script>
-    <!-- End Qualified -->
 
     <style>
-      body {
-        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-        max-width: 720px;
-        margin: 80px auto;
-        padding: 0 24px;
-        color: #17323a;
-        line-height: 1.6;
+      :root {
+        --fj-red: #E60027;
+        --fj-red-dark: #B50020;
+        --fj-red-light: #FFF1F3;
+        --ink: #1A1A1A;
+        --ink-sub: #4A4A4A;
+        --line: #E5E5E5;
+        --bg: #FAFAFA;
       }
-      h1 { margin-bottom: 8px; }
-      .muted { color: #6b7a80; font-size: 14px; }
-      code { background: #eef5f6; padding: 2px 6px; border-radius: 4px; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        font-family: "Noto Sans JP", "Hiragino Sans", system-ui, sans-serif;
+        color: var(--ink);
+        line-height: 1.7;
+        background: #fff;
+      }
+      header {
+        border-top: 4px solid var(--fj-red);
+        border-bottom: 1px solid var(--line);
+        background: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .nav {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 18px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo { font-weight: 800; font-size: 20px; letter-spacing: 0.02em; }
+      .logo span { color: var(--fj-red); }
+      .nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; font-size: 14px; }
+      .nav a { color: var(--ink); text-decoration: none; font-weight: 500; }
+      .nav a:hover { color: var(--fj-red); }
+
+      .hero {
+        background: linear-gradient(135deg, #B50020 0%, #E60027 60%, #FF4B5E 100%);
+        color: #fff;
+        padding: 96px 32px 112px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        right: -120px;
+        top: -120px;
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+        border-radius: 50%;
+      }
+      .hero-inner { max-width: 1160px; margin: 0 auto; position: relative; z-index: 1; }
+      .eyebrow {
+        display: inline-block;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.4);
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-size: 13px;
+        margin-bottom: 24px;
+      }
+      .hero h1 { font-size: 48px; line-height: 1.3; margin: 0 0 24px; font-weight: 800; letter-spacing: -0.01em; }
+      .hero p.lead { font-size: 18px; max-width: 720px; margin: 0 0 40px; opacity: 0.95; }
+      .cta {
+        display: inline-block;
+        background: #fff;
+        color: var(--fj-red);
+        padding: 16px 36px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 15px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      }
+      .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+      .cta.ghost { background: transparent; color: #fff; border: 1px solid #fff; margin-left: 12px; box-shadow: none; }
+
+      section.block { max-width: 1160px; margin: 0 auto; padding: 96px 32px; }
+      .section-title { text-align: center; margin-bottom: 64px; }
+      .section-title .kicker {
+        color: var(--fj-red);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+      .section-title h2 { font-size: 34px; margin: 0 0 16px; font-weight: 800; letter-spacing: -0.01em; }
+      .section-title p { color: var(--ink-sub); max-width: 680px; margin: 0 auto; }
+
+      .challenges { background: var(--bg); }
+      .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
       .card {
-        background: #f7fafb;
-        border: 1px solid #dce7ea;
+        background: #fff;
+        border: 1px solid var(--line);
         border-radius: 8px;
-        padding: 16px 20px;
-        margin-top: 24px;
+        padding: 36px 28px;
+        transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      }
+      .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(230, 0, 39, 0.08); border-color: var(--fj-red); }
+      .card .icon {
+        width: 48px; height: 48px;
+        background: var(--fj-red-light);
+        color: var(--fj-red);
+        border-radius: 8px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 22px; font-weight: 800;
+        margin-bottom: 20px;
+      }
+      .card h3 { font-size: 18px; margin: 0 0 12px; font-weight: 700; }
+      .card p { color: var(--ink-sub); font-size: 15px; margin: 0; }
+
+      .solution-row { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-bottom: 96px; }
+      .solution-row:last-child { margin-bottom: 0; }
+      .solution-row.reverse .visual { order: 2; }
+      .visual {
+        background: linear-gradient(135deg, var(--fj-red-light), #fff);
+        border-left: 4px solid var(--fj-red);
+        border-radius: 4px;
+        padding: 48px;
+        min-height: 280px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 72px; color: var(--fj-red); font-weight: 800;
+      }
+      .solution-row h3 { font-size: 26px; margin: 0 0 16px; font-weight: 800; }
+      .solution-row .tag { display: inline-block; color: var(--fj-red); font-weight: 700; font-size: 13px; letter-spacing: 0.1em; margin-bottom: 12px; }
+      .solution-row p { color: var(--ink-sub); margin: 0 0 20px; }
+      .solution-row ul { margin: 0; padding: 0; list-style: none; }
+      .solution-row li { padding: 10px 0 10px 28px; position: relative; border-bottom: 1px solid var(--line); }
+      .solution-row li:last-child { border-bottom: none; }
+      .solution-row li::before { content: ""; position: absolute; left: 0; top: 18px; width: 16px; height: 2px; background: var(--fj-red); }
+
+      .stats { background: var(--ink); color: #fff; }
+      .stats .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
+      .stat-num { font-size: 56px; font-weight: 800; color: var(--fj-red); line-height: 1; margin-bottom: 8px; }
+      .stat-num small { font-size: 24px; margin-left: 4px; }
+      .stat-label { font-size: 14px; opacity: 0.8; }
+
+      .cta-band { background: var(--fj-red); color: #fff; text-align: center; padding: 72px 32px; }
+      .cta-band h2 { font-size: 32px; margin: 0 0 16px; font-weight: 800; }
+      .cta-band p { margin: 0 0 32px; opacity: 0.95; }
+
+      footer { background: #0F0F0F; color: #999; padding: 48px 32px; text-align: center; font-size: 13px; }
+      footer .logo { color: #fff; margin-bottom: 8px; }
+
+      @media (max-width: 860px) {
+        .nav ul { display: none; }
+        .hero h1 { font-size: 32px; }
+        .hero { padding: 64px 24px 80px; }
+        section.block { padding: 64px 24px; }
+        .grid-3, .stats .grid-4 { grid-template-columns: 1fr; }
+        .solution-row { grid-template-columns: 1fr; gap: 32px; margin-bottom: 64px; }
+        .solution-row.reverse .visual { order: 0; }
+        .cta.ghost { margin-left: 0; margin-top: 12px; display: block; }
       }
     </style>
   </head>
   <body>
-    <h1>Qualified Piper Test</h1>
-    <p class="muted">GitHub Pages 上で Qualified snippet を読み込むテストページです。</p>
+    <header>
+      <div class="nav">
+        <div class="logo">MFG<span>Core</span> Modernization</div>
+        <ul>
+          <li><a href="#challenge">経営課題</a></li>
+          <li><a href="#solution">ソリューション</a></li>
+          <li><a href="#results">導入効果</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </header>
 
-    <div class="card">
-      <p>このページで Piper が表示されれば、Qualified の Experience 条件と snippet 設定は正常です。</p>
-      <p>表示されない場合は、DevTools の Console で <code>window.qualified</code> の値と <code>qualified.js</code> のネットワーク応答を確認してください。</p>
-    </div>
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="eyebrow">製造業向け基幹システム モダナイゼーション</span>
+        <h1>老朽化した基幹システムを、<br />未来を支える経営基盤へ。</h1>
+        <p class="lead">
+          レガシー ERP・生産管理システムのブラックボックス化、2027年問題、人材不足。
+          製造業の競争力を支えてきた基幹システムを、クラウドネイティブな次世代アーキテクチャへ段階的に刷新します。
+        </p>
+        <a href="#contact" class="cta">資料をダウンロード</a>
+        <a href="#solution" class="cta ghost">ソリューションを見る</a>
+      </div>
+    </section>
 
-    <div class="card">
-      <strong>チェックリスト</strong>
-      <ul>
-        <li>Qualified → Settings → Setup → <code>Website domains</code> にこのページのホスト名を追加</li>
-        <li>Automatic Experience の URL 条件を、このページの URL に合わせる</li>
-        <li>シークレットウィンドウで開いて過去 cookie の影響を排除</li>
-      </ul>
-    </div>
+    <section class="block challenges" id="challenge">
+      <div class="section-title">
+        <div class="kicker">Challenges</div>
+        <h2>製造業の基幹システムが抱える課題</h2>
+        <p>ハードウェア保守終了、有識者の退職、DX 推進のボトルネック。多くの製造業がいま、この壁に直面しています。</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">01</div>
+          <h3>レガシー化・ブラックボックス化</h3>
+          <p>数十年前に構築された COBOL / メインフレーム資産。設計書は失われ、有識者は退職。改修に膨大な工数と期間を要します。</p>
+        </div>
+        <div class="card">
+          <div class="icon">02</div>
+          <h3>データ連携の分断</h3>
+          <p>生産・販売・在庫・原価が個別最適化され、経営判断に必要なリアルタイム可視化が実現できません。</p>
+        </div>
+        <div class="card">
+          <div class="icon">03</div>
+          <h3>2027年問題と保守限界</h3>
+          <p>SAP ERP 6.0 の保守終了、ハードウェア EOSL。移行計画の遅延は事業継続リスクに直結します。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="solution">
+      <div class="section-title">
+        <div class="kicker">Solution</div>
+        <h2>段階的モダナイゼーション アプローチ</h2>
+        <p>一括刷新ではなく、リスクを最小化しながら価値を段階的に提供する 3 つのステップ。</p>
+      </div>
+
+      <div class="solution-row">
+        <div class="visual">01</div>
+        <div>
+          <div class="tag">ASSESSMENT</div>
+          <h3>現行資産の可視化と診断</h3>
+          <p>ソースコード自動解析ツールにより、レガシー資産の構造・依存関係・冗長度を定量評価。刷新すべき箇所と残すべき箇所を明確に分離します。</p>
+          <ul>
+            <li>COBOL / PL/I / RPG 自動解析</li>
+            <li>業務ロジック抽出とドキュメント再生成</li>
+            <li>刷新ROI シミュレーション</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="solution-row reverse">
+        <div class="visual">02</div>
+        <div>
+          <div class="tag">REARCHITECT</div>
+          <h3>クラウドネイティブへの再構築</h3>
+          <p>マイクロサービス化・API 化により、生産管理・販売管理・原価管理を疎結合に。ビジネスの変化に俊敏に追随できる基盤へ。</p>
+          <ul>
+            <li>コンテナ / Kubernetes 基盤への移行</li>
+            <li>API Gateway と業務イベント駆動アーキテクチャ</li>
+            <li>データ基盤の統合とリアルタイム分析</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="solution-row">
+        <div class="visual">03</div>
+        <div>
+          <div class="tag">OPERATE &amp; EVOLVE</div>
+          <h3>継続的な進化とAI活用</h3>
+          <p>SRE 体制での運用自動化、需要予測 AI、生成 AI による業務改善。刷新後も止まらず、進化し続ける基幹システムへ。</p>
+          <ul>
+            <li>DevOps / SRE による運用高度化</li>
+            <li>需要予測・異常検知 AI モデルの実装</li>
+            <li>生成AIによる現場業務の生産性向上</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" id="results">
+      <div class="block" style="padding: 96px 32px;">
+        <div class="section-title">
+          <div class="kicker" style="color: #FF6B7A;">Proven Results</div>
+          <h2 style="color: #fff;">導入企業の成果</h2>
+        </div>
+        <div class="grid-4">
+          <div>
+            <div class="stat-num">60<small>%</small></div>
+            <div class="stat-label">運用コスト削減</div>
+          </div>
+          <div>
+            <div class="stat-num">3.5<small>x</small></div>
+            <div class="stat-label">リリース速度向上</div>
+          </div>
+          <div>
+            <div class="stat-num">90<small>%</small></div>
+            <div class="stat-label">障害検知時間短縮</div>
+          </div>
+          <div>
+            <div class="stat-num">120<small>+</small></div>
+            <div class="stat-label">製造業向け導入実績</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" id="contact">
+      <h2>まずは無料アセスメントから。</h2>
+      <p>お客様の基幹システムの現状を可視化し、最適なモダナイゼーション ロードマップをご提案します。</p>
+      <a href="#" class="cta" style="background:#fff;color:var(--fj-red);">相談する</a>
+    </section>
+
+    <footer>
+      <div class="logo">MFG<span style="color:var(--fj-red);">Core</span> Modernization</div>
+      <div>© 2026 MFG Core Modernization. All rights reserved.</div>
+    </footer>
   </body>
 </html>
